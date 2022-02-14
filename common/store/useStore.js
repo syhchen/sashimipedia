@@ -36,6 +36,19 @@ const defaultState = {
         },
       ],
     },
+    MAGURO: {
+      name: {
+        jp: {
+          romanji: ["Maguro"],
+        },
+        en: ["Bluefin Tuna"],
+      },
+      image: [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Various_tuna_sashimi.jpg/2880px-Various_tuna_sashimi.jpg",
+        },
+      ],
+    },
     AKAMI: {
       name: {
         jp: {
@@ -43,7 +56,11 @@ const defaultState = {
         },
         en: ["Bluefin Tuna (Lean)"],
       },
-      image: [],
+      image: [
+        {
+          src: "https://images.unsplash.com/photo-1635452273191-f08ce9934102?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+        },
+      ],
     },
     CHUTORO: {
       name: {
@@ -52,7 +69,11 @@ const defaultState = {
         },
         en: ["Bluefin Tuna (Medium-Fatty)"],
       },
-      image: [],
+      image: [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Rokusanen_Wakayama_Japan07s5.jpg/2880px-Rokusanen_Wakayama_Japan07s5.jpg",
+        },
+      ],
     },
     OTORO: {
       name: {
@@ -61,26 +82,38 @@ const defaultState = {
         },
         en: ["Bluefin Tuna (Fatty)"],
       },
-      image: [],
-    },
-    HIRAME: {
-      name: {
-        jp: {
-          romanji: ["Hirame"],
+      image: [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rokusanen_Wakayama_Japan08bs.jpg/2880px-Rokusanen_Wakayama_Japan08bs.jpg",
         },
-        en: ["Fluke", "Flounder"],
-      },
-      image: [],
+      ],
     },
-    AJI: {
-      name: {
-        jp: {
-          romanji: ["Aji", "Maaji"],
-        },
-        en: ["Horse Mackerel", "Jack Mackerel", "Scad"],
-      },
-      image: [],
-    },
+    // HIRAME: {
+    //   name: {
+    //     jp: {
+    //       romanji: ["Hirame"],
+    //     },
+    //     en: ["Fluke", "Flounder"],
+    //   },
+    //   image: [
+    //     {
+    //       src: "",
+    //     },
+    //   ],
+    // },
+    // AJI: {
+    //   name: {
+    //     jp: {
+    //       romanji: ["Aji", "Maaji"],
+    //     },
+    //     en: ["Horse Mackerel", "Jack Mackerel", "Scad"],
+    //   },
+    //   image: [
+    //     {
+    //       src: "",
+    //     },
+    //   ],
+    // },
     TAI: {
       name: {
         jp: {
@@ -88,7 +121,11 @@ const defaultState = {
         },
         en: ["Red Sea Bream"],
       },
-      image: [],
+      image: [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Red_sea_bream_sashimi_%2827992669723%29.jpg/2560px-Red_sea_bream_sashimi_%2827992669723%29.jpg",
+        },
+      ],
     },
     UNAGI: {
       name: {
@@ -97,25 +134,37 @@ const defaultState = {
         },
         en: ["Freshwater Eel"],
       },
-      image: [],
-    },
-    SAWARA: {
-      name: {
-        jp: {
-          romanji: ["Sawara"],
+      image: [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/2/25/Unagi_Nigiri_Sushi_-_Suzuran_Japan_Foods_Trading.jpg",
         },
-        en: ["Spanish Mackerel"],
-      },
-      image: [],
+      ],
     },
-    HOTATE: {
-      name: {
-        jp: {
-          romanji: ["Hotate", "Hotategai"],
-        },
-        en: ["Scallop"],
-      },
-      image: [],
-    },
+    // SAWARA: {
+    //   name: {
+    //     jp: {
+    //       romanji: ["Sawara"],
+    //     },
+    //     en: ["Spanish Mackerel"],
+    //   },
+    //   image: [
+    //     {
+    //       src: "",
+    //     },
+    //   ],
+    // },
+    // HOTATE: {
+    //   name: {
+    //     jp: {
+    //       romanji: ["Hotate", "Hotategai"],
+    //     },
+    //     en: ["Scallop"],
+    //   },
+    //   image: [
+    //     {
+    //       src: "",
+    //     },
+    //   ],
+    // },
   },
 }
