@@ -1,9 +1,59 @@
-html,
+html {
+  --page-max-width: 400px;
+  --page-spacing-horizontal: 16px;
+
+  --border-radius-round: 999px;
+  --border-radius-md: 4px;
+  --border-radius-sm: 2px;
+
+  --line-height-xxl: 48px;
+  --line-height-xl: 40px;
+  --line-height-lg: 32px;
+  --line-height-md: 24px;
+  --line-height-sm: 24px;
+  --line-height-sm: 24px;
+
+  --font-size-xxl: 36px;
+  --font-size-xl: 28px;
+  --font-size-lg: 22px;
+  --font-size-md: 18px;
+  --font-size-sm: 16px;
+  --font-size-xs: 14px;
+
+  --font-family-display: serif;
+  --font-family-text: sans-serif;
+
+  --font-color-strong: rgba(51, 51, 51, 1);
+  --font-color-average: rgba(51, 51, 51, 0.8);
+  --font-color-weak: rgba(51, 51, 51, 0.6);
+
+  --background-color-overflow: rgba(250, 250, 250, 1);
+  --background-color-base: rgba(250, 250, 250, 1);
+  --background-color-surface: rgba(255, 255, 255, 1);
+  --background-color-overlay: rgba(255, 255, 255, 1);
+
+  --cover-color-strong: rgba(0, 0, 0, 0.5);
+  --cover-color-average: rgba(0, 0, 0, 0.3);
+  --cover-color-weak: rgba(0, 0, 0, 0.1);
+  --cover-color-transparent: rgba(0, 0, 0, 0);
+
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-text);
+  background: var(--background-color-overflow);
+  color: var(--font-color-strong);
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: var(--background-color-base);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-display);
 }
 
 a {
