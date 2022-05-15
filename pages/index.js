@@ -17,10 +17,10 @@ const Index = () => {
     const { name } = entry
 
     const matchKey = key.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchNameJp = name.jp.romanji.filter((name) =>
+    const matchNameEn = name.en.filter((name) =>
       name.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    const matchNameEn = name.en.filter((name) =>
+    const matchNameJp = name.jp.filter((name) =>
       name.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
@@ -44,6 +44,7 @@ const Index = () => {
 
       <header className={s.header}>
         <div className={s.headerTitleGroup}>
+          <Image width={48} height={48} src="/icon.png" />
           <h1 className={s.headerTitle}>Sashimipedia</h1>
         </div>
         <div className={s.headerSubtitleGroup}>
@@ -75,12 +76,12 @@ const Index = () => {
 }
 
 const EntryItem = ({ image, name, onClick }) => {
-  const imageSrc = image[0]?.src
+  const thumbnailSrc = image[0]?.src
 
-  const title = name.jp.romanji[0]
-  const altTitles = name.jp.romanji.filter((_, i) => i !== 0).join(", ")
-
-  const definitions = name.en
+  const title = name.en[0]
+  const altTitles = name.en.filter((_, i) => i !== 0).join(" · ")
+  const jpTitles = name.jp.join(" · ")
+  const cnTitles = name.cn.join(" · ")
 
   return (
     <li className={s.entryItem}>
@@ -89,7 +90,7 @@ const EntryItem = ({ image, name, onClick }) => {
           <div
             alt={`photo of ${title}`}
             className={s.entryItemImage}
-            style={{ backgroundImage: `url(${imageSrc})` }}
+            style={{ backgroundImage: `url(${thumbnailSrc})` }}
           />
           <button className={s.entryItemImageButton} onClick={onClick} />
         </div>
@@ -98,20 +99,23 @@ const EntryItem = ({ image, name, onClick }) => {
         <div className={s.entryItemTitlesWrapper}>
           <h2 className={s.entryItemTitle}>{title}</h2>
           {altTitles.length > 0 && (
-            <h3 className={s.entryItemAltTitles}>a.k.a. {altTitles}</h3>
+            <h3 className={s.entryItemAltTitles}> · {altTitles}</h3>
           )}
         </div>
-        <div className={s.entryItemDefinitionsWrapper}>
-          <p className={s.entryItemDefinitions}>
-            {definitions.map((definition, i) =>
-              i === 0 ? (
-                <strong key={i}>{definition}</strong>
-              ) : (
-                <span key={i}>, {definition}</span>
-              )
-            )}
-          </p>
-        </div>
+        {jpTitles.length > 0 && (
+          <div className={s.entryItemDefinitionsWrapper}>
+            <p className={s.entryItemDefinitions}>
+              {jpTitles.length > 0 && <span>{jpTitles}</span>}
+            </p>
+          </div>
+        )}
+        {cnTitles.length > 0 && (
+          <div className={s.entryItemDefinitionsWrapper}>
+            <p className={s.entryItemDefinitions}>
+              {cnTitles.length > 0 && <span>{cnTitles}</span>}
+            </p>
+          </div>
+        )}
       </div>
     </li>
   )
