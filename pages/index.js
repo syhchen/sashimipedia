@@ -10,6 +10,7 @@ import s from "../styles/index.module.css"
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeEntry, setActiveEntry] = useState()
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   const { store } = useStore()
   const { entries } = store
@@ -27,6 +28,33 @@ const Index = () => {
     return matchKey || matchNameJp.length > 0 || matchNameEn.length > 0
   })
 
+  const CustomLightbox = ({ images }) => (
+    <Lightbox
+      mainSrc={images[lightboxIndex]?.large.url}
+      nextSrc={
+        images.length > 1
+          ? images[(lightboxIndex + 1) % images.length]?.large.url
+          : undefined
+      }
+      prevSrc={
+        images.length > 1
+          ? images[(lightboxIndex + images.length - 1) % images.length]?.large
+              .url
+          : undefined
+      }
+      onCloseRequest={() => {
+        setActiveEntry(undefined)
+        setLightboxIndex(0)
+      }}
+      onMoveNextRequest={() =>
+        setLightboxIndex((lightboxIndex + 1) % images.length)
+      }
+      onMovePrevRequest={() =>
+        setLightboxIndex((lightboxIndex + images.length - 1) % images.length)
+      }
+    />
+  )
+
   return (
     <div className={s.root}>
       <Head>
@@ -35,12 +63,7 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {activeEntry && (
-        <Lightbox
-          mainSrc={entries[activeEntry].images[0]?.large.url}
-          onCloseRequest={() => setActiveEntry(undefined)}
-        />
-      )}
+      {activeEntry && <CustomLightbox images={entries[activeEntry].images} />}
 
       <header className={s.header}>
         <div className={s.headerTitleGroup}>
@@ -90,7 +113,7 @@ const EntryItem = ({ images, names, onClick }) => {
           <div
             alt={`photo of ${title}`}
             className={s.entryItemImage}
-            style={{ backgroundImage: `url(${thumbnailSrc})` }}
+            style={{ backgroundImage: thumbnailSrc && `url(${thumbnailSrc})` }}
           />
           <button className={s.entryItemImageButton} onClick={onClick} />
         </div>
