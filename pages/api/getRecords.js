@@ -7,7 +7,9 @@ Airtable.configure({ apiKey: process.env.AT_API_KEY })
 
 const getRecords = async (_, res) => {
   const base = Airtable.base(baseId)
-  const records = await base(tableId).select().all()
+  const records = await base(tableId)
+    .select({ sort: [{ field: "Key", direction: "asc" }] })
+    .all()
 
   return res.status(200).json({ records: sanitize(records) })
 }
