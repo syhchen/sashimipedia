@@ -14,13 +14,13 @@ const Index = () => {
   const { store } = useStore()
   const { entries } = store
   const entryList = Object.entries(entries).filter(([key, entry]) => {
-    const { name } = entry
+    const { names } = entry
 
     const matchKey = key.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchNameEn = name.en.filter((name) =>
+    const matchNameEn = names.en.filter((name) =>
       name.toLowerCase().includes(searchQuery.toLowerCase())
     )
-    const matchNameJp = name.jp.filter((name) =>
+    const matchNameJp = names.jp.filter((name) =>
       name.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
@@ -37,7 +37,7 @@ const Index = () => {
 
       {activeEntry && (
         <Lightbox
-          mainSrc={entries[activeEntry].image[0]?.src}
+          mainSrc={entries[activeEntry].images[0]?.large.url}
           onCloseRequest={() => setActiveEntry(undefined)}
         />
       )}
@@ -75,13 +75,13 @@ const Index = () => {
   )
 }
 
-const EntryItem = ({ image, name, onClick }) => {
-  const thumbnailSrc = image[0]?.src
+const EntryItem = ({ images, names, onClick }) => {
+  const thumbnailSrc = images[0]?.large?.url
 
-  const title = name.en[0]
-  const altTitles = name.en.filter((_, i) => i !== 0).join(" · ")
-  const jpTitles = name.jp.join(" · ")
-  const cnTitles = name.cn.join(" · ")
+  const title = names.en[0]
+  const altTitles = names.en.filter((_, i) => i !== 0).join(" · ")
+  const jpTitles = names.jp.join(" · ")
+  const cnTitles = names.cn.join(" · ")
 
   return (
     <li className={s.entryItem}>
